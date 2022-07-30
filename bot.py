@@ -88,6 +88,10 @@ async def on_message(message):
 
     if message.content.startswith('!ping'):
         await message.channel.send('Pong!')
+    if message.content.startswith("!sunucu"):
+        await message.channel.send("Sunucu ismi: " + str(message.guild.name))
+    if message.content.startswith("!sunucusahibi"):
+        await message.channel.send("Sunucu sahibi: Mertcinarsah74 ve Drexy")
 
 @client.event
 async def on_member_ban(member):
@@ -101,5 +105,5 @@ async def on_member_unban(member):
     await member.dm_channel.send(
         f"Merhaba {member.name}, Discord sunucumuzdaki **banın kaldırıldı!** \n discord.gg/4w8D6yrKCX")
 
-
 client.run(TOKEN)
+
