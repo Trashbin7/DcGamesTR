@@ -19,11 +19,12 @@ print("Bot yükleniyor...")
 print()
 print(Fore.GREEN + "---" + Fore.RED + "-----------------")
 print(Style.RESET_ALL)
-print("Kuruluyor...")
+print("importlar/değişkenler kuruluyor...")
 print("------------------------------------------------------")
 import discord
 from dotenv import load_dotenv
 import time
+import random
 os.system("cls")
 print("------------------------------------------------------")
 print("Bot yükleniyor...")
@@ -66,8 +67,9 @@ async def on_ready():
     print(Fore.YELLOW + str(guild.name))
     print(Style.RESET_ALL + "(id: " + Fore.YELLOW + str(guild.id) + Style.RESET_ALL + ")")
     print()
-    print("github.com/trashbin7/DcGamesTR")
+    print()
     print("------------------------------------------------------")
+
 
 @client.event
 async def on_member_join(member):
@@ -86,12 +88,27 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!ping'):
+    if message.content.startswith('.yardım'):
+        await message.channel.send('**YARDIM (BOT V0.4)** \n `.ping` - bot pingini gösterir. \n `.sunucu` - sunucu bilgisini gösterir. \n `.kullanıcı` - kullanıcı bilgisini gösterir. \n \n bu botda birkaç gizli özellik var ||günaydın|| gibi. onları sizin bulmanız gerekecek!')
+
+    if message.content.startswith('.ping'):
         await message.channel.send('Pong!')
-    if message.content.startswith("!sunucu"):
+    if message.content.startswith(".sunucu"):
         await message.channel.send("Sunucu ismi: " + str(message.guild.name))
-    if message.content.startswith("!sunucusahibi"):
+    if message.content.startswith(".sunucusahibi"):
         await message.channel.send("Sunucu sahibi: Mertcinarsah74 ve Drexy")
+    if message.content.startswith(".sunucuid"):
+        await message.channel.send("Sunucu ID: " + str(message.guild.id))
+    if message.content.startswith("sa"):
+        await message.channel.send("as")
+    if message.content.startswith(".kullanıcı"):
+        await message.channel.send("Kullanıcı ismi: " + str(message.author.name))
+    if message.content.startswith("günaydın"):
+        await message.channel.send("sana da günaydın!")
+    if message.content.startswith("iyi geceler"):
+        await message.channel.send("sana da iyi geceler!")
+
+# kendime not: buraya iyi günler yazızını ekleyeceğim.
 
 @client.event
 async def on_member_ban(member):
@@ -104,6 +121,7 @@ async def on_member_unban(member):
     await member.create_dm()
     await member.dm_channel.send(
         f"Merhaba {member.name}, Discord sunucumuzdaki **banın kaldırıldı!** \n discord.gg/4w8D6yrKCX")
+
 
 client.run(TOKEN)
 
