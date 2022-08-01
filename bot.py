@@ -34,7 +34,7 @@ print(Style.RESET_ALL)
 print("Token yükleniyor...")
 print("------------------------------------------------------")
 load_dotenv()
-TOKEN = ('MTAwMjkwNzE0NTkzNjgzNDU5MA.GKpQHG.c4FnuxLgw8b975U822LT0EJxdV7lOJMK6VNzx4')
+TOKEN = os.environ["TOKEN"]
 GUILD = ('DISCORD_GUILD')
 
 client = discord.Client()
